@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Emre Ünal</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font awesome cdn font icon css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init("NYmW6de__kSMh_a6H"); // Replace with your EmailJS user ID
+        })();
+    </script>
+</head>
+<body>
+    <div class="hero-header">
+        <div class="wrapper">
+            <header>
+                <a href="index.html" class="logo">
+                    <i class="fa-solid fa-e"></i>
+                    <div class="logo-text">Emre Ünal</div>
+                </a>
+                <nav>
+                    <div class="togglebtn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <ul class="navlinks">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="skills.html">Skills</a></li>
+                        <li><a href="experience.html">Experience</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <!--===== CONTACT =====-->
+            <section class="contact section" id="contact">
+                <div class="hero-text" style="text-align: center;">
+                    <h1>Contact Me</h1>
+                </div>
+                <div class="contact__container bd-grid">
+                    <div class="contact__form-container">
+                        <form id="contact-form" class="contact__form">
+                            <input type="text" name="from_name" placeholder="Name" class="contact__input" required>
+                            <input type="email" name="from_email" placeholder="Email" class="contact__input" required>
+                            <textarea name="message" cols="0" rows="10" class="contact__input" placeholder="Message" required></textarea>
+                            <input type="submit" value="Send" class="contact__button button">
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    
+
+    <script>
+        // Toggle button for navbar
+        const toggleBtn = document.querySelector('.togglebtn');
+        const navLinks = document.querySelector('.navlinks');
+
+        toggleBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            toggleBtn.classList.toggle('click');
+        });
+
+        // EmailJS integration
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            emailjs.sendForm('service_wreriwa', 'template_oonqbbr', this)
+                .then(function() {
+                    alert('Email sent successfully!');
+                }, function(error) {
+                    alert('Failed to send email. Please try again later.');
+                });
+        });
+    </script>
+</body>
+</html>
